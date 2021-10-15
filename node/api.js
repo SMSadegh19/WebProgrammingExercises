@@ -31,7 +31,7 @@ app.post('/node/sha256', function(req, res) {
     if (!check_status[0]){
       result['sha256'] = ''
     }else{
-      var hash = crypto.createHash('sha256').update(string ).digest('hex');
+      var hash = crypto.createHash('sha256').update(string).digest('hex');
       result['sha256'] = hash
       client.set(hash, string);
     }
@@ -39,6 +39,14 @@ app.post('/node/sha256', function(req, res) {
     res.end(JSON.stringify(result));
 })
 
+dirname = "/home/smss/web/WebProgrammingExercises/frontend"
+app.use(express.static(dirname));
+
+app.get("/", function(req, res) {
+  res.sendFile(dirname + "/index.html");
+  res.end();
+}
+);
 
 app.get('/node/sha256', function(req, res) {
   var sha256 = req.query.sha256
