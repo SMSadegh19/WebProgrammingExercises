@@ -1,0 +1,17 @@
+version: "3"
+services:
+    nodeserver:
+        build:
+            context: ./node
+        ports:
+            - "5000:5000"
+    goserver:
+        build:
+            context: ./GO
+        ports:
+            - "8080:8080"
+    nginx:
+        build:
+            context: ./nginx
+        ports:
+            - "8080:80"
