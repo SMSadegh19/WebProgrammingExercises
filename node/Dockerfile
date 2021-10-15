@@ -1,20 +1,20 @@
-# pull the Node.js Docker image
 FROM node:alpine
-
-# create the directory inside the container
 WORKDIR /usr/src/app
-
-# copy the package.json files from local machine to the workdir in container
 COPY package*.json ./
-
-# run npm install in our local machine
 RUN npm install
-
-# copy the generated modules and all other files to the container
 COPY . .
-
-# our app is running on port 5000 within the container, so need to expose it
 EXPOSE 5000
-
-# the command that starts our app
 CMD ["node", "api.js"]
+
+
+
+FROM golang:1.16-alpine
+WORKDIR /usr/src/goapp
+COPY go.mod ./
+COPY go.sum ./
+RUN go mod download
+COPY *.go ./
+RUN go build -o /docker-go-sha
+EXPOSE 8080
+CMD [ "/docker-go-sha" ]
+
