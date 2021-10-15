@@ -2,7 +2,6 @@ var express = require('express')
 var app = express()
 var crypto = require('crypto');
 const redis = require("redis");
-const axios = require("axios");
 
 const client = redis.createClient(
   '6379', '213.233.179.83'
@@ -46,7 +45,6 @@ app.get('/node/sha256', function(req, res) {
   result = {}
   try {
         client.get(sha256, async (err, jobs) => {
-          
             if (err) throw err;
             res.setHeader('Content-Type', 'application/json');
             if (jobs) {
@@ -68,7 +66,7 @@ app.get('/node/sha256', function(req, res) {
   
 })
 
-var server = app.listen(8080, function () {
+var server = app.listen(5000, function () {
   var host = server.address().address
   var port = server.address().port
 })
