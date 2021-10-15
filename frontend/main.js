@@ -1,14 +1,15 @@
+var base_url = 'http://213.233.179.83:8080/';
+
 function postStrNode() {
-    my_string = $("#string_field").val()
-    console.log(my_string)
-    $.post('http://213.233.179.83:8080/node/sha256?string='+my_string, {},
+    my_string = $("#string_field").val();
+    console.log(my_string);
+    $.post(base_url + 'node/sha256?string=' + my_string, {},
         function(data){
-            const obj = JSON.parse(data);
-            let status = obj['status'];
-            let status_str = obj['status_str'];
-            let sha256_token = obj['sha256'];
-            console.log("post str for node!")
-            console.log(JSON.stringify(obj))
+            let status = data['status'];
+            let status_str = data['status_str'];
+            let sha256_token = data['sha256'];
+            console.log("post str for node!");
+            console.log(JSON.stringify(obj));
     }).fail(function(){
         console.log("error");
         console.log("post failed");
@@ -16,18 +17,47 @@ function postStrNode() {
 };
 
 function postStrGo() {
-    my_string = $("#string_field").val()
-    console.log(my_string)
-    $.post('http://213.233.179.83:8080/go/sha256?string='+my_string, {},
+    my_string = $("#string_field").val();
+    console.log(my_string);
+    $.post(base_url + 'go/sha256?string=' + my_string, {},
         function(data){
-            const obj = JSON.parse(data);
-            let status = obj['status'];
-            let status_str = obj['status_str'];
-            let sha256_token = obj['sha256'];
-            console.log("post str for node!")
-            console.log(JSON.stringify(obj))
+            let status = data['status'];
+            let status_str = data['status_str'];
+            let sha256_token = data['sha256'];
+            console.log("post str for go!");
+            console.log(JSON.stringify(obj));
     }).fail(function(){
         console.log("error");
         console.log("post failed");
+    });
+};
+
+function getStrNode() {
+    my_string = $("#sha256_field").val();
+    console.log(my_string);
+    $.get(base_url + 'node/sha256?sha256=' + my_string, {},
+        function(data){
+            let found = data['found'];
+            let string = data['string'];
+            console.log("get str for node!");
+            console.log(JSON.stringify(obj));
+    }).fail(function(){
+        console.log("error");
+        console.log("get failed");
+    });
+};
+
+function getStrGo() {
+    my_string = $("#sha256_field").val();
+    console.log(my_string);
+    $.get(base_url + 'go/sha256?sha256=' + my_string, {},
+        function(data){
+            let found = data['found'];
+            let string = data['string'];
+            console.log("get str for go!");
+            console.log(JSON.stringify(obj));
+    }).fail(function(){
+        console.log("error");
+        console.log("get failed");
     });
 };
