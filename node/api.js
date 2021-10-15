@@ -41,8 +41,14 @@ app.post('/node/sha256', function(req, res) {
 
 dirname = "/home/smss/web/WebProgrammingExercises/frontend"
 app.use(express.static(dirname));
-
+app.get("/node/test", function(req, res) {
+  res.end("YES");
+})
+app.get("/test", function(req, res) {
+  res.end("YES?");
+})
 app.get("/", function(req, res) {
+  res.end("hey")
   res.sendFile(dirname + "/index.html");
   res.end();
 }
