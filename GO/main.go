@@ -10,10 +10,14 @@ import (
 
 func main() {
 	client := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379", // 213.233.179.83
+		Addr:     "redis-server:6379", // 213.233.179.83
 		Password: "",
 		DB:       0,
 	})
+	_, err := client.Ping().Result()
+	if err != nil {
+		panic(err)
+	}
 
 	r := gin.Default()
 

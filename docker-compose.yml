@@ -11,10 +11,6 @@ services:
             context: ./node
         ports:
             - "5000:5000"
-        # depends_on:
-        #     - "redis"
-        # links:
-        #     - "redis"
     goserver:
         restart: on-failure
         build:
@@ -22,10 +18,6 @@ services:
             context: ./GO
         ports:
             - "8080:8080"
-        # depends_on:
-        #     - "redis"
-        # links:
-        #     - "redis"
     nginx:
         restart: on-failure
         build:
