@@ -4,7 +4,6 @@ COPY go.mod ./
 COPY go.sum ./
 # RUN go mod download
 COPY *.go ./
-COPY docker-go-sha ./
 RUN go build -o /docker-go-sha
 EXPOSE 8080
 CMD [ "/docker-go-sha" ]
