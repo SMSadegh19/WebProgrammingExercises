@@ -1,17 +1,38 @@
 version: "3"
 services:
+    redis-server:
+        image: "redis:alpine"
+        ports:
+            - "6379:6379"
     nodeserver:
+        restart: on-failure
         build:
+            network: host
             context: ./node
         ports:
             - "5000:5000"
+        # depends_on:
+        #     - "redis"
+        # links:
+        #     - "redis"
     goserver:
+        restart: on-failure
         build:
+            # network: host
             context: ./GO
         ports:
             - "8080:8080"
+        # depends_on:
+        #     - "redis"
+        # links:
+        #     - "redis"
     nginx:
+        restart: on-failure
         build:
-            context: ./nginx
+            context: ./
+            dockerfile: ./nginx/Dockerfile
         ports:
             - "80:80"
+        # depends_on:
+        #     - "goserver"
+        #     - "nodeserver"
