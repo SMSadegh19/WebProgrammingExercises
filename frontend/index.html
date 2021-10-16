@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="fa">
   <head>
-    <title>گروه مهندسین نابی ایرانی وب</title>
-    <meta name="description" content="گروه مهندسین نابی ایرانی وب" />
+    <title>گروه نابی وب؛ متشکل از مهندسین ایرانی</title>
+    <meta name="description" content="گروه نابی وب؛ متشکل از مهندسین ایرانی" />
 
-    <meta property="og:title" content="گروه مهندسین نابی ایرانی وب" />
+    <meta property="og:title" content="گروه نابی وب؛ متشکل از مهندسین ایرانی" />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:description"
-      content="افتخار نمی‌کنیم که بهترینیم؛ اما مفتخریم که بهترین‌ها ما را برگزیده‌اند."
-    />
-    <!-- <meta property="og:image" content="https://folan.ir/prisoners/img/og_image.png" /> -->
+    <meta property="og:description" content="افتخار نمی‌کنیم که بهترینیم؛ اما مفتخریم که بهترین‌ها ما را برگزیده‌اند."/>
+    <meta property="og:image" content="https://i.ibb.co/VmfPFdf/nabi.png"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css?v=4" />
   </head>
   <body class="black">
     <div class="main">
-      <div id="prisoners" class="person prisoners">
+      <div id="engineers" class="person engineers">
         <div class="spacer"></div>
         <div class="padder"></div>
         <div id="title" class="title">
-          <h1>گروه مهندسی ایرانی نابی</h1>
-          <span id="counter" class="counter"></span>
+          <h1>گروه نابی وب؛ متشکل از مهندسین ایرانی</h1>
         </div>
         <div data-background="black" class="subtitle">
           <p class="description">
@@ -32,13 +29,13 @@
         </div>
         <div class="infobox first">
           <div class="infobox-inner">
-            <p>گروه مهندسی ایرانی خیلی خفنن.</p>
-            <input id="string_field" dir="ltr" type="text" required="" placeholder="رمز بده : )"/><br>
-            <button onclick="postStrNode()">Post for Node</button><br>
-            <button onclick="postStrGo()">Post for Go</button><br>
-            <input id="sha256_field" dir="ltr" type="text" required="" placeholder="شا۲۵۶ بده : )"/><br>
-            <button onclick="getStrNode()">Get for Node</button><br>
-            <button onclick="getStrGo()">Get for Go</button><br>
+            <p dir="ltr"><b>We are winner! Chicken is dinner!</b></p>
+            <input id="string_field" type="text" required="" placeholder="رمز بده : )"/><br>
+            <button class="btn btn-success" onclick="postStrNode()">Post for Node</button><br>
+            <button class="btn btn-success" onclick="postStrGo()">Post for Go</button><br>
+            <input id="sha256_field" type="text" required="" placeholder="شا۲۵۶ بده : )"/><br>
+            <button class="btn btn-success" onclick="getStrNode()">Get for Node</button><br>
+            <button class="btn btn-success" onclick="getStrGo()">Get for Go</button><br>
           </div>
         </div>
       </div>
