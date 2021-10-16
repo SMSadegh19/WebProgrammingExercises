@@ -39,6 +39,10 @@ func main() {
 	r.GET("/go/sha256/", func(c *gin.Context) {
 		hash := c.Query("sha256")
 		str, err := client.Get(hash).Result()
+		c.JSON(200, gin.H{
+			"str": str,
+			"err": err,
+		})
 		if err != nil {
 			c.JSON(200, gin.H{
 				"found":  true,
