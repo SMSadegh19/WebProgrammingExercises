@@ -64,5 +64,5 @@ func main() {
 			})
 		}
 	})
-	r.Run("localhost:8080")
+	r.Run()
 }
