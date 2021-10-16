@@ -32,12 +32,21 @@ func main() {
 		} else {
 			hash_bytes := sha256.Sum256([]byte(str))
 			hash_string := fmt.Sprintf("%x", string(hash_bytes[:]))
-			go client.Set(hash_string, str, 0).Err()
-			c.JSON(200, gin.H{
-				"status":     true,
-				"status_str": "",
-				"sha256":     hash_string,
-			})
+			err := client.Set(hash_string, str, 0).Err()
+			if err != nil {
+				c.JSON(200, gin.H{
+					"status":     true,
+					"status_str": "",
+					"sha256":     hash_string,
+				})
+			} else {
+				c.JSON(200, gin.H{
+					"status":     false,
+					"status_str": err,
+					"sha256":     hash_string,
+				})
+			}
+
 		}
 	})
 	r.GET("/go/sha256/", func(c *gin.Context) {
@@ -55,5 +64,5 @@ func main() {
 			})
 		}
 	})
-	r.Run()
+	r.Run("localhost:8080")
 }
