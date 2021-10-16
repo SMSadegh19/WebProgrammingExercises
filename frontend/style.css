@@ -154,23 +154,6 @@ blockquote {
 blockquote strong {
   color: #a90000;
 }
-#animated-letters {
-  max-width: 100%;
-}
-#animated-letters path {
-  stroke-dasharray: 330;
-  stroke-width: 12px;
-  fill: none;
-  transition: stroke-dashoffset 4s;
-  stroke-dashoffset: 330;
-  stroke-linecap: round;
-}
-#animated-letters.animate path {
-  stroke-dashoffset: 660;
-}
-#animated-letters#animated-letters path {
-  stroke: #921f4b;
-}
 .infobox-yellow .infobox-inner {
   background-color: #ffd438;
   box-shadow: none;
