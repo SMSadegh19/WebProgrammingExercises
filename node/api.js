@@ -4,7 +4,7 @@ var crypto = require('crypto');
 const redis = require("redis");
 
 const client = redis.createClient(
-  '6379', '213.233.179.83'
+  '6379', 'redis' // 213.233.179.83
 );
 
 client.on('connect', function() {
