@@ -10,7 +10,7 @@ import (
 
 func main() {
 	client := redis.NewClient(&redis.Options{
-		Addr:     "redis:6379", // 213.233.179.83
+		Addr:     "localhost:6379", // 213.233.179.83
 		Password: "",
 		DB:       0,
 	})
@@ -28,7 +28,7 @@ func main() {
 		} else {
 			hash_bytes := sha256.Sum256([]byte(str))
 			hash_string := fmt.Sprintf("%x", string(hash_bytes[:]))
-			client.Set(hash_string, str, 0).Err()
+			go client.Set(hash_string, str, 0).Err()
 			c.JSON(200, gin.H{
 				"status":     true,
 				"status_str": "",
