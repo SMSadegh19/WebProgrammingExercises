@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/sha256"
+	"fmt"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis"
@@ -16,8 +17,8 @@ func main() {
 
 	r := gin.Default()
 
-	r.POST("/ip/go/sha256/:string", func(c *gin.Context) {
-		str := c.Param("string")
+	r.POST("/go/sha256/", func(c *gin.Context) {
+		str := c.Query("string")
 		if len([]rune(str)) < 8 {
 			c.JSON(200, gin.H{
 				"status":     false,
@@ -25,17 +26,18 @@ func main() {
 				"sha256":     nil,
 			})
 		} else {
-			hash := sha256.Sum256([]byte(str))
-			err := client.Set(string(hash[:]), str, 0).Err()
+			hash_bytes := sha256.Sum256([]byte(str))
+			hash_string := fmt.Sprintf("%x", string(hash_bytes[:]))
+			client.Set(hash_string, str, 0).Err()
 			c.JSON(200, gin.H{
 				"status":     true,
-				"status_str": err,
-				"sha256":     hash,
+				"status_str": "",
+				"sha256":     hash_string,
 			})
 		}
 	})
-	r.GET("/ip/go/sha256/:string", func(c *gin.Context) {
-		hash := c.Param("string")
+	r.GET("/go/sha256/", func(c *gin.Context) {
+		hash := c.Query("sha256")
 		str, err := client.Get(hash).Result()
 		if err != nil {
 			c.JSON(200, gin.H{
