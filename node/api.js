@@ -3,9 +3,10 @@ var app = express()
 var crypto = require('crypto');
 const redis = require("redis");
 
-const client = redis.createClient(
-  '6379', 'redis' // 213.233.179.83
-);
+const client = redis.createClient({
+  host: 'redis-server',
+  port: 6379
+});
 
 client.on('connect', function() {
   console.log('Connected!');
