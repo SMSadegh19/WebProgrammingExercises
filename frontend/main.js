@@ -1,4 +1,4 @@
-var base_url = 'http://213.233.179.83:8080/';
+var base_url = 'http://213.233.179.83:80/';
 
 function postStrNode() {
     my_string = $("#string_field").val();
@@ -9,7 +9,7 @@ function postStrNode() {
             let status_str = data['status_str'];
             let sha256_token = data['sha256'];
             console.log("post str for node!");
-            console.log(JSON.stringify(obj));
+            console.log(data);
     }).fail(function(){
         console.log("error");
         console.log("post failed");
@@ -25,7 +25,7 @@ function postStrGo() {
             let status_str = data['status_str'];
             let sha256_token = data['sha256'];
             console.log("post str for go!");
-            console.log(JSON.stringify(obj));
+            console.log(data);
     }).fail(function(){
         console.log("error");
         console.log("post failed");
@@ -40,7 +40,7 @@ function getStrNode() {
             let found = data['found'];
             let string = data['string'];
             console.log("get str for node!");
-            console.log(JSON.stringify(obj));
+            console.log(data);
     }).fail(function(){
         console.log("error");
         console.log("get failed");
@@ -55,7 +55,7 @@ function getStrGo() {
             let found = data['found'];
             let string = data['string'];
             console.log("get str for go!");
-            console.log(JSON.stringify(obj));
+            console.log(data);
     }).fail(function(){
         console.log("error");
         console.log("get failed");
