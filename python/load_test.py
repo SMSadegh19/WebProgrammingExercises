@@ -7,7 +7,7 @@ hashes = []
 
 class WebsiteUser(HttpUser):
     # host = "http://213.233.179.83"
-    host = "localhost"
+    host = "http://localhost"
 
 
     def get_go_node(self) -> str:
