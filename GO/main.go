@@ -35,13 +35,13 @@ func main() {
 			err := client.Set(hash_string, str, 0).Err()
 			if err != nil {
 				c.JSON(200, gin.H{
-					"status":     true,
+					"status":     false,
 					"status_str": "",
 					"sha256":     hash_string,
 				})
 			} else {
 				c.JSON(200, gin.H{
-					"status":     false,
+					"status":     true,
 					"status_str": err,
 					"sha256":     hash_string,
 				})
