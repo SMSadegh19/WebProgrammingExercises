@@ -29,6 +29,6 @@ services:
             dockerfile: ./nginx/Dockerfile
         ports:
             - "8000:80"
-        depends_on:
-            - goserver
-            - nodeserver
+        # depends_on:
+        #     - goserver
+        #     - nodeserver
