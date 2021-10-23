@@ -48,19 +48,19 @@ Nginx:
 --------  
 Users:          100  
 SpawnRate:      100  
-RPS:            195  
+RPS:            280  
 NodeJS:    
     Scale:      5    
-    Ram:        22mb    
-    CPU:        [10% , 13%]
+    Ram:        95mb
+    CPU:        19%
 GoServer:  
     Scale:      5  
-    Ram:        9mb  
-    CPU:        [11%, 14%]  
+    Ram:        38mb  
+    CPU:        17%
 Redis:  
     Scale:      1  
-    CPU:        [1.6%, 2.3%]  
+    CPU:        2.23
 Nginx:  
     Scale:      1  
-    Ram:        5mb  
-    CPU:        [12%, 16%]  
+    Ram:        4mb  
+    CPU:        14% 
