@@ -1,6 +1,6 @@
 # Run
 `pip install -r requirements.txt`  
-`docker-compose up` or `docker-compose up --scale nodeserver=5   goserver=5`
+`docker-compose up` or `docker-compose up --scale nodeserver=5   goserver=5`  
 `locust -f load_test.py`  
 you may need to increasing maximum number of open files limit  
 read this link for doing that:  
