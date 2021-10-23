@@ -41,6 +41,11 @@ app.post('/node/sha256', function(req, res) {
 })
 
 
+app.get('/ping', function(req, res) {
+  console.log(`${process.env.HOSTNAME}`)
+  res.end('pong');   
+})
+
 app.get('/node/sha256', function(req, res) {
   var sha256 = req.query.sha256
   result = {}
