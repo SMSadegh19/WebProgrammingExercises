@@ -1,4 +1,2 @@
-# اجرای nginx
-دستور
+# Run nginx
 ``docker-compose up -d nginx``
-را بزنید.

@@ -1,4 +1,2 @@
-# اجرای کد
-دستور
+# Run
 ``docker-compose up -d nodeserver``
-را بزنید.
