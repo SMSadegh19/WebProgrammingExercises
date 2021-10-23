@@ -11,8 +11,9 @@ services:
             context: ./nodejs
         depends_on:
             - redis-server
-        ports:
-            - "5000-5005:5000"
+        expose:
+            # - "5000-5005:5000"
+            - "5000"
     goserver:
         restart: on-failure
         build:
@@ -20,8 +21,9 @@ services:
             context: ./go
         depends_on:
             - redis-server
-        ports:
-            - "8080-8085:8080"
+        expose:
+            # - "8080-8085:8080"
+            - "8080"
     nginx:
         restart: on-failure
         build:
