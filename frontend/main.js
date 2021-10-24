@@ -18,33 +18,46 @@ var toasty_config = {
 var toast = new Toasty(toasty_config);
 toast.configure(toasty_config);
 
-function postReq(my_url, req_type) {
-    $.post(my_url, {},
-        function(data){
-            let status = data['status'];
-            let status_str = data['status_str'];
-            let sha256_token = data['sha256'];
-            console.log("post str for " + req_type + ":");
-            console.log(req_type);
-            toast.success(JSON.stringify(data));
-            console.log(data);
-    }).fail(function(){
-        console.log("error");
-        console.log("post failed");
-        toast.error("post failed for " + req_type + ".");
-    });
+var editor =new JsonEditor('#json-display', {});
+
+function toastStrError() {
+    toast.warning("String length should have at least 8 characters!");
+};
+
+function postReq(req_type, my_string) {
+    my_url = base_url + req_type + '/sha256?string=' + my_string;
+    if (String(my_string).length < 8) {
+        toastStrError();
+    } else {
+        $.post(my_url, {},
+            function(data){
+                let status = data['status'];
+                let status_str = data['status_str'];
+                let sha256_token = data['sha256'];
+                console.log("post str for " + req_type + ":");
+                console.log(req_type);
+                editor.load(data);
+                toast.success("post for " + req_type + " is done!");
+                console.log(data);
+        }).fail(function(){
+            console.log("error");
+            console.log("post failed");
+            toast.error("post failed for " + req_type + ".");
+        });
+    }
 }
+
 
 function postStrNode() {
     my_string = $("#string_field").val();
     console.log(my_string);
-    postReq(base_url + 'node/sha256?string=' + my_string, "node");
+    postReq("node", my_string);
 };
 
 function postStrGo() {
     my_string = $("#string_field").val();
     console.log(my_string);
-    postReq(base_url + 'go/sha256?string=' + my_string, "go");
+    postReq("go", my_string);
 };
 
 function getReq(my_url, req_type) {
@@ -53,7 +66,8 @@ function getReq(my_url, req_type) {
             let found = data['found'];
             let string = data['string'];
             console.log(req_type);
-            toast.success(JSON.stringify(data));
+            editor.load(data);
+            toast.success("get for " + req_type + " is done!");
             console.log(data);
     }).fail(function(){
         console.log("error");
@@ -73,7 +87,3 @@ function getStrGo() {
     console.log(my_string);
     getReq(base_url + 'go/sha256?sha256=' + my_string, "go");
 };
-
-// toast.success(msg);
-// toast.error(msg);
-// TODO: len(string) > 8
