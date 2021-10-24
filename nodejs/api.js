@@ -27,8 +27,7 @@ app.post('/node/sha256', function(req, res) {
     var string = req.query.string
     var check_status = check(string);
     result = {}
-    result['status'] = check_status[0]
-    result['status_str'] = check_status[1]
+   
     if (!check_status[0]){
       result['sha256'] = ''
     }else{
@@ -36,6 +35,8 @@ app.post('/node/sha256', function(req, res) {
       result['sha256'] = hash
       client.set(hash, string);
     }
+    result['status'] = check_status[0]
+    result['status_str'] = check_status[1]
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(result));
 })
@@ -71,6 +72,10 @@ app.get('/node/sha256', function(req, res) {
 
   
 })
+
+app.get('*', function(req, res){
+  res.send('<html><head><title>404 Not Found</title></head><body><center><h1>404 Not Found</h1></center><hr><center>nodejs</center></body></html>', 404);
+});
 
 var server = app.listen(5000, function () {
   var host = server.address().address
