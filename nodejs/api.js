@@ -18,7 +18,7 @@ let MIN_LENGTH = 8
 function check(string){
   if (string.length < MIN_LENGTH)
     return [false, "String length should be >= " + MIN_LENGTH]
-  return [true, "OK"];
+  return [true, null];
 }
 
 
@@ -62,7 +62,7 @@ app.get('/node/sha256', function(req, res) {
             } else {
               res.end(JSON.stringify({
                 'found': false,
-                'string': ''
+                'string': null
               }));     
             }
         });
