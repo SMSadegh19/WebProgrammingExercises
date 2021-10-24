@@ -72,6 +72,10 @@ app.get('/node/sha256', function(req, res) {
   
 })
 
+app.get('*', function(req, res){
+  res.send('<html><head><title>404 Not Found</title></head><body><center><h1>404 Not Found</h1></center><hr><center>nodejs</center></body></html>', 404);
+});
+
 var server = app.listen(5000, function () {
   var host = server.address().address
   var port = server.address().port
